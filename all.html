@@ -1,0 +1,902 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+    
+  everl Git
+  
+  </title>
+  
+  
+  <link href="atom.xml" rel="alternate" title="everl Git" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+  <script src="asset/highlightjs/highlight.pack.js"></script>
+  <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site: ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="self" href="index.html">Home</a></li>
+        
+        <li id=""><a target="_self" href="archives.html">Archives</a></li>
+        
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; everl Git</span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+        <li><a target="self" href="index.html">Home</a></li>
+        
+        <li><a target="_self" href="archives.html">Archives</a></li>
+        
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="freedom.html">freedom</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
+	$(function(){
+		$('#menu_item_index').addClass('is_active');
+	});
+</script>
+<div class="row">
+	<div class="large-8 medium-8 columns">
+		<div class="markdown-body home-categories">
+		
+			<div class="article">
+                <a class="clearlink" href="15339742927973.html">
+                
+                  <h1>hdfs安全模式</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<ul>
+<li><p>检查坏块<br/>
+<code>hdfs fsck /</code><br/>
+发现坏块所在路径<br/>
+The filesystem under path &#39;/&#39; is CORRUPT</p></li>
+<li><p>判断是否重要</p></li>
+<li><p>执行操作(删除or复制)<br/>
+⁃   <code>hdfs fsck  / -delete</code></p></li>
+</ul>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/8/11 15:58 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='freedom.html'>freedom</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15338896616903.html">
+                
+                  <h1>Linux Shell 文本处理工具集锦</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h3 id="toc_0">本文将介绍Linux下使用Shell处理文本时最常用的工具：</h3>
+
+<p>find、grep、xargs、sort、uniq、tr、cut、paste、wc、sed、awk；<br/>
+提供的例子和参数都是最常用和最为实用的；</p>
+
+<blockquote>
+<p>我对shell脚本使用的原则是命令单行书写，尽量不要超过2行；<br/>
+如果有更为复杂的任务需求，还是考虑python吧；</p>
+</blockquote>
+
+<h4 id="toc_1">find 文件查找</h4>
+
+<ul>
+<li><p>查找txt和pdf文件<br/>
+<code>find . \( -name &quot;*.txt&quot; -o -name &quot;*.pdf&quot; \) -print</code></p></li>
+<li><p>正则方式查找.txt和pdf<br/>
+<code>find . -regex  &quot;.*\(\.txt|\.pdf\)$&quot;</code></p>
+<blockquote>
+<p>-iregex： 忽略大小写的正则</p>
+</blockquote></li>
+<li><p>否定参数<br/>
+查找所有非txt文本<br/>
+<code>find . ! -name &quot;*.txt&quot; -print</code></p></li>
+<li><p>指定搜索深度<br/>
+打印出当前目录的文件（深度为1）<br/>
+<code>find . -maxdepth 1 -type f</code> </p></li>
+</ul>
+
+<h5 id="toc_2">定制搜索</h5>
+
+<ul>
+<li><p>按类型搜索：<br/>
+<code>find . -type d -print</code>  # 只列出所有目录</p>
+<blockquote>
+<p>-type f 文件 / l 符号链接</p>
+</blockquote></li>
+<li><p>按时间搜索：</p>
+<blockquote>
+<p>-atime 访问时间 (单位是天，分钟单位则是-amin，以下类似）<br/>
+-mtime 修改时间 （内容被修改）<br/>
+-ctime 变化时间 （元数据或权限变化）</p>
+</blockquote></li>
+<li><p>最近7天被访问过的所有文件：<br/>
+<code>find . -atime 7 -type f -print</code></p></li>
+<li><p>按大小搜索：</p>
+<blockquote>
+<p>w字 k M G<br/>
+寻找大于2k的文件</p>
+</blockquote>
+<p><code>find . -type f -size +2k</code></p></li>
+</ul>
+
+<h5 id="toc_3">按权限查找：</h5>
+
+<p><code>find . -type f -perm 644 -print</code> # 找具有可执行权限的所有文件</p>
+
+<h5 id="toc_4">按用户查找：</h5>
+
+<p><code>find . -type f -user me -print</code> # 找用户me所拥有的文件</p>
+
+<h5 id="toc_5">找到后的后续动作</h5>
+
+<ul>
+<li>删除：<br/>
+删除当前目录下所有的swp文件：
+<code>find . -type f -name &quot;*.swp&quot; -delete</code></li>
+<li>执行动作（强大的exec）
+<code>find . -type f -user root -exec chown me {} \;</code> # 将当前目录下的所有权变更为me</li>
+</ul>
+
+<blockquote>
+<p><strong>注：{}是一个特殊的字符串，对于每一个匹配的文件，{}会被替换成相应的文件名；</strong></p>
+</blockquote>
+
+<p>eg：将找到的文件全都copy到另一个目录：<br/>
+    <code>find . -type f -mtime +10 -name &quot;*.txt&quot; -exec cp {} OLD \;</code></p>
+
+<ul>
+<li>结合多个命令
+<strong><em>tips</em></strong>: 如果需要后续执行多个命令，可以将多个命令写成一个脚本。然后 -exec 调用时执行脚本即可；
+<code>-exec ./commands.sh {} \;</code></li>
+</ul>
+
+<h5 id="toc_6">-print的定界符</h5>
+
+<blockquote>
+<p>默认使用&#39;\n&#39;作为文件的定界符；<br/>
+-print0 使用&#39;\0&#39;作为文件的定界符，这样就可以搜索包含空格的文件；</p>
+</blockquote>
+
+<hr/>
+
+<h3 id="toc_7">grep 文本搜索</h3>
+
+<p>grep match_patten file // 默认访问匹配行</p>
+
+<ul>
+<li><p>常用参数</p>
+<blockquote>
+<p>-o 只输出匹配的文本行 VS -v 只输出没有匹配的文本行<br/>
+-c 统计文件中包含文本的次数</p>
+</blockquote>
+<p><code>grep -c &quot;text&quot; filename</code></p>
+<blockquote>
+<p>-n 打印匹配的行号<br/>
+-i 搜索时忽略大小写<br/>
+-l 只打印文件名</p>
+</blockquote></li>
+<li><p>在多级目录中对文本递归搜索(程序员搜代码的最爱）：<br/>
+<code>grep &quot;class&quot; . -R -n</code></p></li>
+<li><p>匹配多个模式<br/>
+<code>grep -e &quot;class&quot; -e &quot;vitural&quot; file</code></p></li>
+<li><p>grep输出以\0作为结尾符的文件名：（-z）<br/>
+<code>grep &quot;test&quot; file* -lZ | xargs -0 rm</code></p></li>
+</ul>
+
+<h3 id="toc_8">xargs 命令行参数转换</h3>
+
+<blockquote>
+<p>xargs 能够将输入数据转化为特定命令的命令行参数；这样，可以配合很多命令来组合使用。比如grep，比如find；</p>
+</blockquote>
+
+<ul>
+<li><p>将多行输出转化为单行输出<br/>
+\n 是多行文本间的定界符<br/>
+<code>cat file.txt| xargs</code></p></li>
+<li><p>将单行转化为多行输出<br/>
+-n：指定每行显示的字段数<br/>
+<code>cat single.txt | xargs -n 3</code></p></li>
+</ul>
+
+<h4 id="toc_9">xargs参数说明</h4>
+
+<blockquote>
+<p>-d 定义定界符 （默认为空格 多行的定界符为 \n）<br/>
+-n 指定输出为多行<br/>
+-I {} 指定替换字符串，这个字符串在xargs扩展时会被替换掉,用于待执行的命令需要多个参数时</p>
+</blockquote>
+
+<p>eg：<br/>
+    <code>cat file.txt | xargs -I {} ./command.sh -p {} -1</code></p>
+
+<blockquote>
+<p>-0：指定\0为输入定界符</p>
+</blockquote>
+
+<p>eg：统计程序行数<br/>
+<code>find source_dir/ -type f -name &quot;*.cpp&quot; -print0 |xargs -0 wc -l</code></p>
+
+<h3 id="toc_10">sort 排序</h3>
+
+<blockquote>
+<p>字段说明：<br/>
+-n 按数字进行排序 VS -d 按字典序进行排序<br/>
+-r 逆序排序<br/>
+-k N 指定按第N列排序</p>
+</blockquote>
+
+<p>eg：<br/>
+    <code>sort -nrk 1 data.txt</code><br/>
+    <code>sort -bd data</code> # 忽略像空格之类的前导空白字符</p>
+
+<h3 id="toc_11">uniq 消除重复行</h3>
+
+<ul>
+<li><p>消除重复行<br/>
+<code>sort unsort.txt | uniq</code></p></li>
+<li><p>统计各行在文件中出现的次数<br/>
+<code>sort unsort.txt | uniq -c</code></p></li>
+<li><p>找出重复行<br/>
+<code>sort unsort.txt | uniq -d</code></p>
+<blockquote>
+<p>可指定每行中需要比较的重复内容：-s 开始位置 -w 比较字符数</p>
+</blockquote></li>
+</ul>
+
+<h3 id="toc_12">用tr进行转换</h3>
+
+<ul>
+<li><p>通用用法<br/>
+<code>echo 12345 | tr &#39;0-9&#39; &#39;9876543210&#39;</code> # 加解密转换，替换对应字符<br/>
+<code>cat text| tr &#39;\t&#39; &#39; &#39;</code>  # 制表符转空格</p></li>
+<li><p>tr删除字符<br/>
+<code>cat file | tr -d &#39;0-9&#39;</code> # 删除所有数字</p></li>
+<li><p>-c 求补集<br/>
+<code>cat file | tr -c &#39;0-9&#39;</code> # 获取文件中所有数字<br/>
+<code>cat file | tr -d -c &#39;0-9 \n&#39;</code>  # 删除非数字数据</p></li>
+<li><p>tr压缩字符</p>
+<blockquote>
+<p>tr -s 压缩文本中出现的重复字符；最常用于压缩多余的空格</p>
+</blockquote>
+<p><code>cat file | tr -s &#39; &#39;</code></p></li>
+<li><p>字符类</p>
+<blockquote>
+<p>tr中可用各种字符类：<br/>
+alnum：字母和数字<br/>
+alpha：字母<br/>
+digit：数字<br/>
+space：空白字符<br/>
+lower：小写<br/>
+upper：大写<br/>
+cntrl：控制（非可打印）字符<br/>
+print：可打印字符<br/>
+使用方法：tr [:class:] [:class:]</p>
+</blockquote>
+<p>eg: <br/>
+<code>tr &#39;[:lower:]&#39; &#39;[:upper:]&#39;</code></p></li>
+</ul>
+
+<h3 id="toc_13">cut 按列切分文本</h3>
+
+<blockquote>
+<p>选项与参数：<br/>
+-d  ：后面接分隔字符。与 -f 一起使用；<br/>
+-f  ：依据 -d 的分隔字符将一段信息分割成为数段，用 -f 取出第几段的意思；<br/>
+-c  ：以字符 (characters) 的单位取出固定字符区间；</p>
+</blockquote>
+
+<p>eg:<br/>
+    <code>cut -d&#39;分隔字符&#39; -f fields</code> # 用于有特定分隔字符</p>
+
+<p>eg: 将 PATH 变量取出，我要找出第3个路径。<br/>
+    <code>echo $PATH | cut -d &#39;:&#39; -f 3</code></p>
+
+<p>eg: 列出 PATH 第3与第5列<br/>
+    <code>echo $PATH | cut -d &#39;:&#39; -f 3,5</code></p>
+
+<p>eg:<br/>
+  <code>cut -c 1-5 file</code> //打印第一到5个字符<br/>
+  <code>cut -c -2 file</code>  //打印前2个字符</p>
+
+<blockquote>
+<p>cut -d命令适合操作具有固定分割符的文本，用 -c 可以处理比较具有格式的输出数据，还可以指定某个范围的值，例如第 12-20 的字符，就是 cut -c 12-20。<br/>
+cut 主要的用途在于将『同一行里面的数据进行分解！』最常使用在分析一些数据或文字数据的时候！这是因为有时候我们会以某些字符当作分割的参数，然后来将数据加以切割，以取得我们所需要的数据。</p>
+</blockquote>
+
+<h3 id="toc_14">paste 按列拼接文本</h3>
+
+<p>eg:</p>
+
+<ul>
+<li><p>将两个文本按列拼接到一起;</p>
+<p><code>cat file1</code></p>
+<blockquote>
+<p>1<br/>
+2</p>
+</blockquote>
+<p><code>cat file2</code></p>
+<blockquote>
+<p>colin<br/>
+book</p>
+</blockquote>
+<p><code>paste file1 file2</code></p>
+<blockquote>
+<p>1 colin<br/>
+2 book</p>
+</blockquote></li>
+<li><p>默认的定界符是制表符，可以用-d指明定界符</p>
+<p><code>paste file1 file2 -d &quot;,&quot;</code></p>
+<blockquote>
+<p>1,colin<br/>
+2,book</p>
+</blockquote></li>
+</ul>
+
+<hr/>
+
+<h3 id="toc_15">wc 统计行和字符的工具</h3>
+
+<p><code>wc -l file</code> # 统计行数<br/>
+<code>wc -w file</code> # 统计单词数<br/>
+<code>wc -c file</code> # 统计字符数</p>
+
+<h3 id="toc_16">sed 文本替换利器</h3>
+
+<ul>
+<li><p>首处替换<br/>
+<code>seg &#39;s/text/replace_text/&#39; file</code>  # 替换每一行的第一处匹配的text</p></li>
+<li><p>全局替换<br/>
+<code>seg &#39;s/text/replace_text/g&#39; file</code></p></li>
+<li><p>默认替换后，输出替换后的内容，如果需要直接替换原文件,使用-i：<br/>
+<code>seg -i &#39;s/text/repalce_text/g&#39; file</code></p></li>
+<li><p>移除空白行：<br/>
+<code>sed &#39;/^$/d&#39; file</code></p></li>
+<li><p>变量转换<br/>
+已匹配的字符串通过标记&amp;来引用.<br/>
+<code>echo this is en example | seg &#39;s/\w+/[&amp;]/g&#39;<br/>
+$&gt;[this]  [is] [en] [example]</code></p></li>
+<li><p>子串匹配标记<br/>
+第一个匹配的括号内容使用标记 \1 来引用<br/>
+<code>sed &#39;s/hello\([0-9]\)/\1/&#39;</code></p></li>
+<li><p>双引号求值<br/>
+sed通常用单引号来引用；也可使用双引号，使用双引号后，双引号会对表达式求值：<br/>
+<code>sed &#39;s/$var/HLLOE/&#39;</code></p></li>
+</ul>
+
+<p>当使用双引号时，我们可以在sed样式和替换字符串中指定变量；<br/>
+eg:</p>
+
+<pre class="line-numbers"><code class="language-text">p=patten
+r=replaced
+echo &quot;line con a patten&quot; | sed &quot;s/$p/$r/g&quot;
+$&gt;line con a replaced
+</code></pre>
+
+<ul>
+<li>其它示例<br/>
+字符串插入字符：将文本中每行内容（PEKSHA） 转换为 PEK/SHA
+<code>sed &#39;s/^.\{3\}/&amp;\//g&#39; file</code></li>
+</ul>
+
+<p>awk 数据流处理工具</p>
+
+<ul>
+<li><p>awk脚本结构<br/>
+awk &#39; BEGIN{ statements } statements2 END{ statements } &#39;</p></li>
+<li><p>工作方式<br/>
+1.执行begin中语句块；<br/>
+2.从文件或stdin中读入一行，然后执行statements2，重复这个过程，直到文件全部被读取完毕；<br/>
+3.执行end语句块；</p></li>
+</ul>
+
+<p>print 打印当前行</p>
+
+<ul>
+<li><p>使用不带参数的print时，会打印当前行;<br/>
+<code>echo -e &quot;line1\nline2&quot; | awk &#39;BEGIN{print &quot;start&quot;} {print } END{ print &quot;End&quot; }&#39;</code> </p></li>
+<li><p>print 以逗号分割时，参数以空格定界;<br/>
+<code>echo | awk &#39; {var1 = &quot;v1&quot; ; var2 = &quot;V2&quot;; var3=&quot;v3&quot;; \<br/>
+print var1, var2 , var3; }&#39;<br/>
+$&gt;v1 V2 v3</code></p></li>
+<li><p>使用-拼接符的方式（&quot;&quot;作为拼接符）;<br/>
+<code>echo | awk &#39; {var1 = &quot;v1&quot; ; var2 = &quot;V2&quot;; var3=&quot;v3&quot;; \<br/>
+print var1&quot;-&quot;var2&quot;-&quot;var3; }&#39;<br/>
+$&gt;v1-V2-v3</code></p></li>
+</ul>
+
+<blockquote>
+<p>特殊变量： NR NF \(0 \)1 $2</p>
+</blockquote>
+
+<ul>
+<li>NR:表示记录数量，在执行过程中对应当前行号；</li>
+<li>NF:表示字段数量，在执行过程总对应当前行的字段数；</li>
+<li>$0:这个变量包含执行过程中当前行的文本内容；</li>
+<li>$1:第一个字段的文本内容；</li>
+<li>$2:第二个字段的文本内容；</li>
+</ul>
+
+<p><code>echo -e &quot;line1 f2 f3\n line2 \n line 3&quot; | awk &#39;{print NR&quot;:&quot;$0&quot;-&quot;$1&quot;-&quot;$2}&#39;</code></p>
+
+<ul>
+<li><p>打印每一行的第二和第三个字段：<br/>
+<code>awk &#39;{print $2, $3}&#39; file</code></p></li>
+<li><p>统计文件的行数：<br/>
+<code>awk &#39; END {print NR}&#39; file</code></p></li>
+<li><p>累加每一行的第一个字段：</p>
+<pre class="line-numbers"><code class="language-text">echo -e &quot;1\n 2\n 3\n 4\n&quot; | awk &#39;BEGIN{num = 0 ;
+print &quot;begin&quot;;} {sum += $1;} END {print &quot;==&quot;; print sum }&#39;
+</code></pre></li>
+</ul>
+
+<p>传递外部变量</p>
+
+<pre class="line-numbers"><code class="language-text">var=1000
+echo | awk &#39;{print vara}&#39; vara=$var #  输入来自stdin
+awk &#39;{print vara}&#39; vara=$var file # 输入来自文件
+</code></pre>
+
+<p>用样式对awk处理的行进行过滤</p>
+
+<pre class="line-numbers"><code class="language-text">awk &#39;NR &lt; 5&#39; #行号小于5
+awk &#39;NR==1,NR==4 {print}&#39; file #行号等于1和4的打印出来
+awk &#39;/linux/&#39; #包含linux文本的行（可以用正则表达式来指定，超级强大）
+awk &#39;!/linux/&#39; #不包含linux文本的行
+</code></pre>
+
+<p>设置定界符<br/>
+使用-F来设置定界符（默认为空格）<br/>
+<code>awk -F: &#39;{print $NF}&#39; /etc/passwd</code></p>
+
+<p>读取命令输出<br/>
+使用getline，将外部shell命令的输出读入到变量cmdout中；<br/>
+<code>echo | awk &#39;{&quot;grep root /etc/passwd&quot; | getline cmdout; print cmdout }&#39;</code></p>
+
+<p>在awk中使用循环<br/>
+<code>for(i=0;i&lt;10;i++){print $i;}</code><br/>
+<code>for(i in array){print array[i];}</code><br/>
+eg:<br/>
+以逆序的形式打印行：(tac命令的实现）<br/>
+<code>seq 9| \<br/>
+awk &#39;{lifo[NR] = $0; lno=NR} \<br/>
+END{ for(;lno&gt;-1;lno--){print lifo[lno];}<br/>
+} &#39;</code></p>
+
+<p>awk实现head、tail命令</p>
+
+<ul>
+<li>head:
+<code>awk &#39;NR&lt;=10{print}&#39; filename</code></li>
+<li>tail:
+<code>awk &#39;{buffer[NR%10] = $0;} END{for(i=0;i&lt;11;i++){ \
+print buffer[i %10]} } &#39; filename</code></li>
+</ul>
+
+<p>打印指定列</p>
+
+<ul>
+<li>awk方式实现：
+<code>ls -lrt | awk &#39;{print $6}&#39;</code></li>
+<li>cut方式实现
+<code>ls -lrt | cut -f6</code></li>
+</ul>
+
+<p>打印指定文本区域</p>
+
+<ul>
+<li>确定行号
+<code>seq 100| awk &#39;NR==4,NR==6{print}&#39;</code></li>
+<li>确定文本<br/>
+打印处于start_pattern 和end_pattern之间的文本；
+<code>awk &#39;/start_pattern/, /end_pattern/&#39; filename</code></li>
+</ul>
+
+<p>eg:<br/>
+<code>seq 100 | awk &#39;/13/,/15/&#39;</code><br/>
+<code>cat /etc/passwd| awk &#39;/mai.*mail/,/news.*news/&#39;</code></p>
+
+<ul>
+<li>awk常用内建函数<br/>
+index(string,search_string):返回search_string在string中出现的位置<br/>
+sub(regex,replacement_str,string):将正则匹配到的第一处内容替换为replacement_str;<br/>
+match(regex,string):检查正则表达式是否能够匹配字符串；<br/>
+length(string)：返回字符串长度</li>
+</ul>
+
+<p><code>echo | awk &#39;{&quot;grep root /etc/passwd&quot; | getline cmdout; print length(cmdout) }&#39;</code> </p>
+
+<h3 id="toc_17">printf 类似c语言中的printf，对输出进行格式化</h3>
+
+<p>eg：<br/>
+<code>seq 10 | awk &#39;{printf &quot;-&gt;%4s\n&quot;, $1}&#39;</code></p>
+
+<h3 id="toc_18">迭代文件中的行、单词和字符</h3>
+
+<h5 id="toc_19">1.迭代文件中的每一行</h5>
+
+<ul>
+<li><p>while 循环法</p>
+<pre class="line-numbers"><code class="language-text">while read line;
+do<br/>
+echo $line;<br/>
+done &lt; file.txt
+</code></pre>
+<p>改成子shell:<br/>
+<code>cat file.txt | (while read line;do echo $line;done)</code></p></li>
+<li><p>awk法：<br/>
+<code>cat file.txt| awk &#39;{print}&#39;</code></p></li>
+</ul>
+
+<h5 id="toc_20">2.迭代一行中的每一个单词</h5>
+
+<pre class="line-numbers"><code class="language-text">for word in $line;
+do 
+echo $word;
+done
+</code></pre>
+
+<h5 id="toc_21">3.迭代每一个字符</h5>
+
+<p><code>${string:start_pos:num_of_chars}</code>：从字符串中提取一个字符；(bash文本切片）<br/>
+<code>${#word}</code>：返回变量word的长度</p>
+
+<blockquote>
+<pre class="line-numbers"><code class="language-text">for((i=0;i&lt;${#word};i++))
+do
+echo ${word:i:1);
+done
+</code></pre>
+</blockquote>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/8/10 16:27 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='freedom.html'>freedom</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15338870311808.html">
+                
+                  <h1>Linux下如何查看计算机的配置信息（cpu物理个数、几核）</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h3 id="toc_0">查看CPU信息命令</h3>
+
+<p>cat /proc/cpuinfo</p>
+
+<h3 id="toc_1">查看物理CPU的个数</h3>
+
+<p>cat /proc/cpuinfo | grep &quot;physical id&quot; | sort | uniq | wc -l</p>
+
+<h3 id="toc_2">查看逻辑CPU的个数</h3>
+
+<p>cat /proc/cpuinfo |grep &quot;processor&quot;| wc -l</p>
+
+<h3 id="toc_3">查看CPU是几核</h3>
+
+<p>cat /proc/cpuinfo | grep &quot;cores&quot;| uniq</p>
+
+<h4 id="toc_4">每个物理CPU中Core的个数：</h4>
+
+<p>cat /proc/cpuinfo | grep &quot;cpu cores&quot; | wc -l</p>
+
+<h3 id="toc_5">查看CPU的主频</h3>
+
+<p>cat /proc/cpuinfo | grep MHz | uniq</p>
+
+<h3 id="toc_6">查看当前操作系统内核信息</h3>
+
+<p>uname -a</p>
+
+<h3 id="toc_7">查看当前操作系统发行版信息</h3>
+
+<p>cat /etc/issue </p>
+
+<h3 id="toc_8">查看逻辑CPU个数, 同时查看CPU型号</h3>
+
+<p>cat /proc/cpuinfo | grep name | cut -f2 -d: | uniq -c<br/>
+cat /proc/cpuinfo | grep physical | uniq -c</p>
+
+<h3 id="toc_9">cpu运行的位数</h3>
+
+<p>getconf LONG_BIT<br/>
+cat /proc/cpuinfo | grep flags | grep &#39; lm &#39; | wc -l</p>
+
+<h4 id="toc_10">是否为超线程？</h4>
+
+<p>如果有两个逻辑CPU具有相同的”core id”，那么超线程是打开的。<br/>
+每个物理CPU中逻辑CPU(可能是core, threads或both)的个数：<br/>
+cat /proc/cpuinfo | grep &quot;siblings&quot;</p>
+
+<hr/>
+
+<h2 id="toc_11">查看内存信息命令</h2>
+
+<p>cat /proc/meminfo</p>
+
+<h2 id="toc_12">查看硬盘信息命令</h2>
+
+<p>fdisk -l</p>
+
+<hr/>
+
+<blockquote>
+<p>processor：系统中逻辑处理核的编号。对于单核处理器，则可认为是其CPU编号，对于多核处理器则可以是物理核、或者使用超线程技术虚拟的逻辑核<br/>
+vendor_id：CPU制造商<br/><br/>
+cpu family：CPU产品系列代号<br/>
+model：CPU属于其系列中的哪一代的代号<br/>
+model name：CPU属于的名字及其编号、标称主频<br/>
+stepping：CPU属于制作更新版本<br/>
+cpu MHz：CPU的实际使用主频<br/>
+cache size：CPU二级缓存大小<br/>
+physical id：单个CPU的标号<br/>
+siblings：单个CPU逻辑物理核数<br/>
+core id：当前物理核在其所处CPU中的编号，这个编号不一定连续<br/>
+cpu cores：该逻辑核所处CPU的物理核数<br/>
+apicid：用来区分不同逻辑核的编号，系统中每个逻辑核的此编号必然不同，此编号不一定连续<br/>
+fpu：是否具有浮点运算单元（Floating Point Unit）<br/>
+fpu_exception：是否支持浮点计算异常<br/>
+cpuid level：执行cpuid指令前，eax寄存器中的值，根据不同的值cpuid指令会返回不同的内容<br/>
+wp：表明当前CPU是否在内核态支持对用户空间的写保护（Write Protection）<br/>
+flags：当前CPU支持的功能<br/>
+bogomips：在系统内核启动时粗略测算的CPU速度（Million Instructions Per Second）<br/>
+clflush size：每次刷新缓存的大小单位<br/>
+cache_alignment：缓存地址对齐单位<br/>
+address sizes：可访问地址空间位数</p>
+</blockquote>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2018/8/10 15:43 下午</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='freedom.html'>freedom</a></span>
+          				   
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+              
+
+
+			<div class="row">
+			  <div class="large-6 columns">
+			  <p class="text-left" style="padding-top:25px;">
+			   
+			  </p>
+			  </div>
+			  <div class="large-6 columns">
+			<p class="text-right" style="padding-top:25px;">
+			
+			</p>
+			  </div>
+			</div>
+		</div>
+	</div><!-- large 8 -->
+
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <h1>everl Git</h1>
+                <div class="site-des">测试发布</div>
+                <div class="social">
+
+
+
+
+
+
+
+
+
+
+
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
+                
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="freedom.html"><strong>freedom</strong></a>
+         
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="15339742927973.html">hdfs安全模式</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15338896616903.html">Linux Shell 文本处理工具集锦</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15338870311808.html">Linux下如何查看计算机的配置信息（cpu物理个数、几核）</a>
+			      </li>
+		     
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
+  <div class="row">
+   <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+
+  
+    
+
+    <script src="asset/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
+
+    
+
+
+
+  </body>
+</html>

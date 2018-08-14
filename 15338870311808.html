@@ -1,0 +1,356 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+    
+  Linux下如何查看计算机的配置信息（cpu物理个数、几核） - everl Git
+  
+  </title>
+  
+  
+  <link href="atom.xml" rel="alternate" title="everl Git" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+  <script src="asset/highlightjs/highlight.pack.js"></script>
+  <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site: ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="self" href="index.html">Home</a></li>
+        
+        <li id=""><a target="_self" href="archives.html">Archives</a></li>
+        
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; everl Git</span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+        <li><a target="self" href="index.html">Home</a></li>
+        
+        <li><a target="_self" href="archives.html">Archives</a></li>
+        
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="freedom.html">freedom</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
+  $(function(){
+    $('#menu_item_index').addClass('is_active');
+  });
+</script>
+<div class="row">
+  <div class="large-8 medium-8 columns">
+      <div class="markdown-body article-wrap">
+       <div class="article">
+          
+          <h1>Linux下如何查看计算机的配置信息（cpu物理个数、几核）</h1>
+     
+        <div class="read-more clearfix">
+          <span class="date">2018/8/10 15:43 下午</span>
+
+          <span>posted in&nbsp;</span> 
+          
+              <span class="posted-in"><a href='freedom.html'>freedom</a></span>
+           
+         
+          <span class="comments">
+            
+
+            
+          </span>
+
+        </div>
+      </div><!-- article -->
+
+      <div class="article-content">
+      <h3 id="toc_0">查看CPU信息命令</h3>
+
+<p>cat /proc/cpuinfo</p>
+
+<h3 id="toc_1">查看物理CPU的个数</h3>
+
+<p>cat /proc/cpuinfo | grep &quot;physical id&quot; | sort | uniq | wc -l</p>
+
+<h3 id="toc_2">查看逻辑CPU的个数</h3>
+
+<p>cat /proc/cpuinfo |grep &quot;processor&quot;| wc -l</p>
+
+<h3 id="toc_3">查看CPU是几核</h3>
+
+<p>cat /proc/cpuinfo | grep &quot;cores&quot;| uniq</p>
+
+<h4 id="toc_4">每个物理CPU中Core的个数：</h4>
+
+<p>cat /proc/cpuinfo | grep &quot;cpu cores&quot; | wc -l</p>
+
+<h3 id="toc_5">查看CPU的主频</h3>
+
+<p>cat /proc/cpuinfo | grep MHz | uniq</p>
+
+<h3 id="toc_6">查看当前操作系统内核信息</h3>
+
+<p>uname -a</p>
+
+<h3 id="toc_7">查看当前操作系统发行版信息</h3>
+
+<p>cat /etc/issue </p>
+
+<h3 id="toc_8">查看逻辑CPU个数, 同时查看CPU型号</h3>
+
+<p>cat /proc/cpuinfo | grep name | cut -f2 -d: | uniq -c<br/>
+cat /proc/cpuinfo | grep physical | uniq -c</p>
+
+<h3 id="toc_9">cpu运行的位数</h3>
+
+<p>getconf LONG_BIT<br/>
+cat /proc/cpuinfo | grep flags | grep &#39; lm &#39; | wc -l</p>
+
+<h4 id="toc_10">是否为超线程？</h4>
+
+<p>如果有两个逻辑CPU具有相同的”core id”，那么超线程是打开的。<br/>
+每个物理CPU中逻辑CPU(可能是core, threads或both)的个数：<br/>
+cat /proc/cpuinfo | grep &quot;siblings&quot;</p>
+
+<hr/>
+
+<h2 id="toc_11">查看内存信息命令</h2>
+
+<p>cat /proc/meminfo</p>
+
+<h2 id="toc_12">查看硬盘信息命令</h2>
+
+<p>fdisk -l</p>
+
+<hr/>
+
+<blockquote>
+<p>processor：系统中逻辑处理核的编号。对于单核处理器，则可认为是其CPU编号，对于多核处理器则可以是物理核、或者使用超线程技术虚拟的逻辑核<br/>
+vendor_id：CPU制造商<br/><br/>
+cpu family：CPU产品系列代号<br/>
+model：CPU属于其系列中的哪一代的代号<br/>
+model name：CPU属于的名字及其编号、标称主频<br/>
+stepping：CPU属于制作更新版本<br/>
+cpu MHz：CPU的实际使用主频<br/>
+cache size：CPU二级缓存大小<br/>
+physical id：单个CPU的标号<br/>
+siblings：单个CPU逻辑物理核数<br/>
+core id：当前物理核在其所处CPU中的编号，这个编号不一定连续<br/>
+cpu cores：该逻辑核所处CPU的物理核数<br/>
+apicid：用来区分不同逻辑核的编号，系统中每个逻辑核的此编号必然不同，此编号不一定连续<br/>
+fpu：是否具有浮点运算单元（Floating Point Unit）<br/>
+fpu_exception：是否支持浮点计算异常<br/>
+cpuid level：执行cpuid指令前，eax寄存器中的值，根据不同的值cpuid指令会返回不同的内容<br/>
+wp：表明当前CPU是否在内核态支持对用户空间的写保护（Write Protection）<br/>
+flags：当前CPU支持的功能<br/>
+bogomips：在系统内核启动时粗略测算的CPU速度（Million Instructions Per Second）<br/>
+clflush size：每次刷新缓存的大小单位<br/>
+cache_alignment：缓存地址对齐单位<br/>
+address sizes：可访问地址空间位数</p>
+</blockquote>
+
+
+    
+
+      </div>
+
+      <div class="row">
+        <div class="large-6 columns">
+        <p class="text-left" style="padding:15px 0px;">
+      
+          <a href="15338896616903.html" 
+          title="Previous Post: Linux Shell 文本处理工具集锦">&laquo; Linux Shell 文本处理工具集锦</a>
+      
+        </p>
+        </div>
+        <div class="large-6 columns">
+      <p class="text-right" style="padding:15px 0px;">
+      
+      </p>
+        </div>
+      </div>
+      <div class="comments-wrap">
+        <div class="share-comments">
+          
+
+          
+
+          
+        </div>
+      </div>
+    </div><!-- article-wrap -->
+  </div><!-- large 8 -->
+
+
+
+
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <h1>everl Git</h1>
+                <div class="site-des">测试发布</div>
+                <div class="social">
+
+
+
+
+
+
+
+
+
+
+
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
+                
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="freedom.html"><strong>freedom</strong></a>
+         
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="15339742927973.html">hdfs安全模式</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15338896616903.html">Linux Shell 文本处理工具集锦</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15338870311808.html">Linux下如何查看计算机的配置信息（cpu物理个数、几核）</a>
+			      </li>
+		     
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
+  <div class="row">
+   <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+
+  
+    
+
+    <script src="asset/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
+
+    
+
+
+
+  </body>
+</html>
